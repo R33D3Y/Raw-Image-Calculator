@@ -11,8 +11,8 @@ namespace Raw_Image_Calculator
 {
     class Program
     {
-        private static string image1 = @"C:\Users\jacks\Desktop\sino800_540x1200.raw";
-        private static string image2 = @"C:\Users\jacks\Desktop\sino801_540x1200.raw";
+        private static string image1 = @"C:\Somepath"; // Image 1 is found here
+        private static string image2 = @"C:\Somepath"; // Image 2 is found here
 
         static void Main(string[] args)
         {
@@ -23,7 +23,7 @@ namespace Raw_Image_Calculator
             BinaryReader br2 = new BinaryReader(File.Open(image2, FileMode.Open));
             int length = (int)br1.BaseStream.Length / sizeof(int);
 
-            using (FileStream stream = new FileStream(@"C:\Users\jacks\Desktop\Result.raw", FileMode.Create))
+            using (FileStream stream = new FileStream(@"C:\Somepath\Result.raw", FileMode.Create)) // Final Image created at set location
             {
                 using (BinaryWriter writer = new BinaryWriter(stream))
                 {
