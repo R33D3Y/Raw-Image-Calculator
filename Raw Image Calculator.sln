@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29021.104
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raw Image Calculator", "Raw Image Calculator\Raw Image Calculator.csproj", "{B8F72A80-A4AA-4D69-9518-AC491B7069F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8F72A80-A4AA-4D69-9518-AC491B7069F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8F72A80-A4AA-4D69-9518-AC491B7069F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8F72A80-A4AA-4D69-9518-AC491B7069F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8F72A80-A4AA-4D69-9518-AC491B7069F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CFB54E55-8494-434C-AA8D-A2F62D1CFB56}
+	EndGlobalSection
+EndGlobal
