@@ -12,9 +12,9 @@ namespace Raw_Image_Calculator
 {
     class Program
     {
-        private static string filePath1 = @"C:\Users\jacks\Desktop\sino800_540x1200.raw"; // Image 1 is found here
-        private static string filePath2 = @"C:\Users\jacks\Desktop\sino801_540x1200.raw"; // Image 2 is found here
-        private static string filePath3 = @"C:\Users\jacks\Desktop\Result2.raw"; // Image 3 is created here
+        private static string filePath1 = @"C:\Users\jacks\Desktop\sino801_540x1200.raw"; // Image 1 is found here
+        private static string filePath2 = @"C:\Users\jacks\Desktop\Test.raw"; // Image 2 is found here
+        private static string filePath3 = @"C:\Users\jacks\Desktop\Result4.raw"; // Image 3 is created here
 
         static async Task Main(string[] args)
         {
@@ -22,10 +22,13 @@ namespace Raw_Image_Calculator
             sw.Start();
 
             Console.WriteLine("Processing...");
+
             List<UInt16> image1 = await ReadAsync(filePath1);
             Console.WriteLine("Image 1 Processed " + sw.Elapsed);
-            List<UInt16> image2 = await ReadAsync(filePath1);
+
+            List<UInt16> image2 = await ReadAsync(filePath2);
             Console.WriteLine("Image 2 Processed " + sw.Elapsed);
+
             List<UInt16> image3 = new List<UInt16>();
 
             for (int i = 0; i < image1.Count; i++)
@@ -41,17 +44,6 @@ namespace Raw_Image_Calculator
             }
 
             Console.WriteLine("Image 3 Calculated " + sw.Elapsed);
-
-            using (FileStream stream = new FileStream(filePath3, FileMode.Create))
-            {
-                using (BinaryWriter writer = new BinaryWriter(stream))
-                {
-                    foreach (UInt16 i in image3)
-                    {
-                        writer.Write(i);
-                    }
-                }
-            }
 
             await WriteAsync(filePath3, image3);
             Console.WriteLine("Image 3 Created " + sw.Elapsed);
@@ -84,10 +76,12 @@ namespace Raw_Image_Calculator
         {
             using (FileStream sourceStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: 4096, useAsync: true))
             {
-                BinaryFormatter bf = new BinaryFormatter();
-                MemoryStream ms = new MemoryStream();
-                bf.Serialize(ms, list);
-                byte[] encodedText = ms.ToArray();
+                //BinaryFormatter bf = new BinaryFormatter();
+                //MemoryStream ms = new MemoryStream();
+                //bf.Serialize(ms, list);
+                //byte[] encodedText = ms.ToArray();
+
+                byte[] encodedText = list.SelectMany(BitConverter.GetBytes).ToArray();
 
                 await sourceStream.WriteAsync(encodedText, 0, encodedText.Length);
             };
@@ -99,7 +93,7 @@ namespace Raw_Image_Calculator
             BinaryReader br2 = new BinaryReader(File.Open(filePath2, FileMode.Open));
             int length = (int)br1.BaseStream.Length / sizeof(int);
 
-            using (FileStream stream = new FileStream(filePath3, FileMode.Create)) // Final Image created at set location
+            using (FileStream stream = new FileStream(filePath3, FileMode.Create))
             {
                 using (BinaryWriter writer = new BinaryWriter(stream))
                 {
