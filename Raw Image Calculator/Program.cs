@@ -12,9 +12,9 @@ namespace Raw_Image_Calculator
 {
     class Program
     {
-        private static string filePath1 = @"C:\Users\jacks\Desktop\sino801_540x1200.raw"; // Image 1 is found here
-        private static string filePath2 = @"C:\Users\jacks\Desktop\Test.raw"; // Image 2 is found here
-        private static string filePath3 = @"C:\Users\jacks\Desktop\Result4.raw"; // Image 3 is created here
+        private static string filePath1 = @"C:\Somepath\sino801_540x1200.raw"; // Image 1 is found here
+        private static string filePath2 = @"C:\Somepath\Test.raw"; // Image 2 is found here
+        private static string filePath3 = @"C:\Somepath\Result4.raw"; // Image 3 is created here
 
         static async Task Main(string[] args)
         {
